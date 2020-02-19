@@ -1,6 +1,6 @@
 ## SWEETT
 
-S.W.E.E.T.T. (**S**oft**w**are **E**nginnering **E**mployment **T**ime **T**racker) is a _time tracking_ and _goal setting_ app specifically tailored towards software engineering job seekers. 
+S.W.E.E.T.T. (**S**oft**w**are **E**nginering **E**mployment **T**ime **T**racker) is a _time tracking_ and _goal setting_ app specifically tailored towards software engineering job seekers. 
 
 [Live Site](https://sweett-gs.herokuapp.com/)
 
