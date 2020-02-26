@@ -4,6 +4,8 @@ S.W.E.E.T.T. (**S**oft**w**are **E**nginering **E**mployment **T**ime **T**racke
 
 [Live Site](https://sweett-gs.herokuapp.com/)
 
+![Sample](./screenshot/sample.png)
+
 ## Background and Overview
 
 **It is difficult to strike a balance between various tasks and figure out what category you might lack in during the job search.** There are so many important categories you must put some time into, yet so little time to put your heart and soul to all of them. Categories such as:
