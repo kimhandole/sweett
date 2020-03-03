@@ -66,6 +66,22 @@ Handling goals is an important feature of the app. Sometimes, users will add goa
 
 Since the app's main focus is time tracking, there are two sections for time: expected time and actual time. Expected time is the time you need to complete a category while actual time is the time you currently accumulated. Calculating the expected and actual time was a challenge. We originally planned to have users change the time limit for each task. However, calculating the expected time by adding the total time of tasks based on goals was very variable. Instead, we decided to have users change the time limit per task for all tasks. This made it easier to calculate the actual time and dynamically change it based on the goals. We calculate the expected time based on a combination of goals and attempts/reports. Each point towards completing a goal will count as the full duration of a task. If there are partially completed goals, the app takes _daily_ attempts/reports to account.
 
+```
+timeTrackerButtons() {
+    const buttons = this.state.isRecording
+        ? this.stopPauseCancelButtons()
+        : this.recordButton();
+
+    return <div className="time-track-buttons">{buttons}</div>;
+}
+
+recordTime() {
+    this.interval = setInterval(() => {
+        this.setState({ time: this.state.time + 1 });
+    }, 1000);
+}
+```
+
 ### Daily Resets
 
 Daily resets provide a way to alert users what categories they might be lacking in. After each day have elapsed, goals for each category will reset to zero. Defined time limits will be added to each category's total time and progress.
