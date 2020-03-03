@@ -72,10 +72,10 @@ increment(e) {
     newGoal.attempted += 1;
     this.props.updateGoal(newGoal)
     .then(goal => {
-        const newCategory = Object.assign({}, this.props.category)
-        newCategory["progress"] = calculateTotalProgress(this.props.goals)
-        this.props.updateCategory(newCategory)
-    })
+        const newCategory = Object.assign({}, this.props.category);
+        newCategory["progress"] = calculateTotalProgress(this.props.goals);
+        this.props.updateCategory(newCategory);
+    });
 }
 
 
@@ -88,10 +88,10 @@ decrement(e) {
     newGoal.attempted -= 1;
     this.props.updateGoal(newGoal)
     .then(goal => {
-        const newCategory = Object.assign({}, this.props.category)
-        newCategory["progress"] = calculateTotalProgress(this.props.goals)
-        this.props.updateCategory(newCategory)
-    })
+        const newCategory = Object.assign({}, this.props.category);
+        newCategory["progress"] = calculateTotalProgress(this.props.goals);
+        this.props.updateCategory(newCategory);
+    });
 }
 ```
 
