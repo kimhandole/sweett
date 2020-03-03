@@ -62,6 +62,39 @@ Each component and collection are designed with modularity and reusability in mi
 
 Handling goals is an important feature of the app. Sometimes, users will add goals that do not count towards the expected time. For instance, users can add a goal to solve X number of Leetcode questions per day, which counts towards the expected time. However, users can also add a goal to solve Y number of _easy_ Leetcode questions per day, which is an enhancement of the previous goal and therefore do not count. In addition to setting the name of the goal and amount needed to complete it, we included the option to choose whether the goal counts toward the total time or not. If it does, it will recalculate the expected time accordingly.
 
+```
+increment(e) {
+    e.preventDefault();
+    const newGoal = Object.assign({}, this.props.goal);
+
+    if (newGoal.attempted === newGoal.expected) return;
+
+    newGoal.attempted += 1;
+    this.props.updateGoal(newGoal)
+    .then(goal => {
+        const newCategory = Object.assign({}, this.props.category)
+        newCategory["progress"] = calculateTotalProgress(this.props.goals)
+        this.props.updateCategory(newCategory)
+    })
+}
+
+
+decrement(e) {
+    e.preventDefault();
+    const newGoal = Object.assign({}, this.props.goal);
+
+    if (newGoal.attempted === 0) return;
+
+    newGoal.attempted -= 1;
+    this.props.updateGoal(newGoal)
+    .then(goal => {
+        const newCategory = Object.assign({}, this.props.category)
+        newCategory["progress"] = calculateTotalProgress(this.props.goals)
+        this.props.updateCategory(newCategory)
+    })
+}
+```
+
 ### Time Tracker
 
 Since the app's main focus is time tracking, there are two sections for time: expected time and actual time. Expected time is the time you need to complete a category while actual time is the time you currently accumulated. Calculating the expected and actual time was a challenge. We originally planned to have users change the time limit for each task. However, calculating the expected time by adding the total time of tasks based on goals was very variable. Instead, we decided to have users change the time limit per task for all tasks. This made it easier to calculate the actual time and dynamically change it based on the goals. We calculate the expected time based on a combination of goals and attempts/reports. Each point towards completing a goal will count as the full duration of a task. If there are partially completed goals, the app takes _daily_ attempts/reports to account.
